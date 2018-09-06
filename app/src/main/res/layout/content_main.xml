@@ -19,10 +19,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.mine.test.view.DrawView
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
     </com.mine.test.view.DrawView>
+
+    <TextView
+        android:id="@+id/tv_to_pathview"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:text="pathView"
+        android:textColor="@android:color/background_light"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/drawer_layout" />
 
 </android.support.constraint.ConstraintLayout>

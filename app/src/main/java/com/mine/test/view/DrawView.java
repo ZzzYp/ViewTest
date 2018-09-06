@@ -30,9 +30,76 @@ public class DrawView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        drawFivePointedStar(canvas);
+        //矩形
+        drawRect(canvas);
+        drawPoint(canvas);
+        //oval 椭圆
+        drawoval(canvas);
+        //RoundRect  圆角矩形
+        drawRoundRect(canvas);
+        //drawArc  扇形
+        drawArc(canvas);
+        //自定义图形
+    }
+
+    private void drawArc(Canvas canvas) {
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(Color.BLUE);
-        paint.setStrokeWidth(5);
+        //drawArc  扇形
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawArc(550, 800, 700, 950, 0, 100, true, paint);
+        canvas.drawArc(550, 1150, 700, 1300, -180, 100, false, paint);
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawArc(750, 800, 900, 1100, 0, 100, true, paint);
+        canvas.drawArc(750, 1150, 900, 1450, -180, 100, false, paint);
+
+    }
+
+
+    private void drawRoundRect(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.BLUE);
+        //RoundRect  圆角矩形
+        canvas.drawRoundRect(300, 800, 500, 1000, 40, 40, paint);
+    }
+
+
+    private void drawoval(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.BLUE);
+        //oval 椭圆
+        RectF rectF = new RectF();
+        rectF.set(50, 800, 200, 1000);
+        canvas.drawOval(rectF, paint);
+
+    }
+
+    private void drawPoint(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.BLUE);
+        //piont
+        float[] points = {50, 600, 60, 600, 70, 600, 80, 600, 90, 600, 50, 700, 60, 700, 70, 700, 80, 700, 90, 700};
+        canvas.drawPoints(points, 2, 12, paint);
+    }
+
+    private void drawRect(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.BLUE);
+
+        //矩形
+        Rect rect = new Rect();
+        rect.set(600, 150, 800, 500);
+        canvas.drawRect(rect, paint);
+    }
+
+    private void drawFivePointedStar(Canvas canvas) {
+
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.RED);
+        //paint.setStrokeWidth(5);
         float[] ptslin1 = {
                 50, 300, 200, 250
         };
@@ -77,32 +144,14 @@ public class DrawView extends View {
         canvas.drawLines(ptslin8, paint);
         canvas.drawLines(ptslin9, paint);
         canvas.drawLines(ptslin10, paint);
-        paint.setStyle(Paint.Style.STROKE);
 
-        canvas.drawCircle(250, 300, 200, paint);
-        canvas.drawColor(Color.parseColor("#88880000"));
+        Paint paintCircle = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        //矩形
-        Rect rect = new Rect();
-        rect.set(600, 150, 800, 500);
-        canvas.drawRect(rect, paint);
+        paintCircle.setStyle(Paint.Style.STROKE);
+        paintCircle.setColor(Color.BLUE);
+        //canvas.drawColor(Color.parseColor("#88880000"));
+        canvas.drawCircle(250, 300, 200, paintCircle);
 
-        //piont
-        float[] points = {50, 600, 60, 600, 70, 600, 80, 600, 90, 600, 50, 700, 60, 700, 70, 700, 80, 700, 90, 700};
-        canvas.drawPoints(points, 2, 12, paint);
-        //oval
-        RectF rectF = new RectF();
-        rectF.set(50, 800, 200, 1000);
-        canvas.drawOval(rectF, paint);
-        //RoundRect
 
-        canvas.drawRoundRect(300,800,500,1000,40,40,paint);
-        //drawArc
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawArc(550,800,700,950,0,100,true,paint);
-        canvas.drawArc(550,1150,700,1300,-180,100,false,paint);
-        paint.setStyle(Paint.Style.STROKE);
-        canvas.drawArc(750,800,900,1100,0,100,true,paint);
-        canvas.drawArc(750,1150,900,1450,-180,100,false,paint);
     }
 }
