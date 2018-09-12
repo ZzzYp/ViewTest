@@ -15,8 +15,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.mine.test.clazzTest.ChildClazz;
+import com.mine.test.javaTest.LinkedListTest;
 import com.mine.test.view.PathViewActivity;
 
+import org.w3c.dom.Element;
+
+import java.util.LinkedList;
 import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity
@@ -136,13 +141,30 @@ public class MainActivity extends AppCompatActivity
             }
             logger.info("intArr  " + i + " :" + intArr[i]);
         }
+
+        //test child and parents super
+        ChildClazz childClazz = new ChildClazz();
+        childClazz.print();
+
+        testLinkList();
+    }
+
+    private void testLinkList() {
+
+
+        LinkedListTest<String> linkedList = new LinkedListTest();
+        for (int i = 0; i < 10; i++) {
+            String s = "item" + i;
+            linkedList.add(s);
+        }
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_to_pathview:
-                Intent intent = new Intent(this,PathViewActivity.class);
+                Intent intent = new Intent(this, PathViewActivity.class);
                 startActivity(intent);
                 break;
         }
