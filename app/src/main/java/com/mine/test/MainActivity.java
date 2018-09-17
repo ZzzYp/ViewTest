@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.mine.test.clazzTest.ChildClazz;
 import com.mine.test.javaTest.LinkedListTest;
 import com.mine.test.view.PathViewActivity;
+import com.mine.test.view.TabViewPageActivity;
 
 import org.w3c.dom.Element;
 
@@ -164,7 +165,9 @@ public class MainActivity extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_to_pathview:
-                Intent intent = new Intent(this, PathViewActivity.class);
+                //Intent intent = new Intent(this, PathViewActivity.class);
+                Intent intent = new Intent(this, TabViewPageActivity.class);
+
                 startActivity(intent);
                 break;
         }
