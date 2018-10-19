@@ -7,9 +7,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.mine.test.fraagment.FirstFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MineFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private FirstFragment fragment;
+    private List<Fragment> fragmentList = new ArrayList<>();
 
     public MineFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -17,9 +21,12 @@ public class MineFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        fragment = new FirstFragment();
-        fragment.setContent("postion" + i);
-        return fragment;
+        //fragment = new FirstFragment();
+        //fragment.setContent("postion" + i);
+        if (fragmentList.size() == 0)
+            return null;
+
+        return fragmentList.get(i);
     }
 
 
@@ -33,6 +40,15 @@ public class MineFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 7;
+        return fragmentList.size();
+    }
+
+
+    public List<Fragment> getFragmentList() {
+        return fragmentList;
+    }
+
+    public void setFragmentList(List<Fragment> fragmentList) {
+        this.fragmentList = fragmentList;
     }
 }
