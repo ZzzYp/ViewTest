@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.mine.test.utils.DpUtils;
+import com.mine.test.utils.KeyboardUtil;
 
 public class ImmersionTestActivity extends AppCompatActivity {
 
@@ -25,8 +26,11 @@ public class ImmersionTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_immersion_test);
+
         setImmersion();
         initview();
+        new KeyboardUtil(this, findViewById(android.R.id.content)).enable();
+
     }
 
     private void initview() {
@@ -49,26 +53,33 @@ public class ImmersionTestActivity extends AppCompatActivity {
                 changeDrawable(drawable);
             }
         });
+
+        findViewById(R.id.iv_menu_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void changeColor(int colorRes) {
         cl_coordinatorLayout.setBackgroundColor(colorRes);
         cl_coordinatorLayout.setFitsSystemWindows(true);
-        setTitleBarBgDisAttribute();
+        //setTitleBarBgDisAttribute();
     }
-
 
 
     private void changeDrawable(Drawable drawable) {
         cl_coordinatorLayout.setBackground(drawable);
         cl_coordinatorLayout.setFitsSystemWindows(true);
-        setTitleBarBgDisAttribute();
+        //setTitleBarBgDisAttribute();
     }
 
     private void setTitleBarBgDisAttribute() {
         int statusBarHeight = getStatusBarHeight(this);
-        int titleBarWidth = DpUtils.dp2Px(this, 42);
-        RelativeLayout.LayoutParams llp = (RelativeLayout.LayoutParams) cl_coordinatorLayout.getLayoutParams();
+        //int titleBarWidth = DpUtils.dp2Px(this, 42);
+        //RelativeLayout.LayoutParams llp = (RelativeLayout.LayoutParams) cl_coordinatorLayout.getLayoutParams();
         //llp.height = statusBarHeight + titleBarWidth;
         //llp.topMargin = statusBarHeight;
         //cl_coordinatorLayout.setLayoutParams(llp);
@@ -76,6 +87,7 @@ public class ImmersionTestActivity extends AppCompatActivity {
 
 
     }
+
     private void setImmersion() {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 //            //透明状态栏

@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_entrance.*
 
 class EntranceActivity : Activity(), EARecAdapterInterface {
     var contents: ArrayList<EntrancePageBean> = ArrayList()
-    var entranceActivityRecyclerviewAdapter: EntranceActivityRecyclerviewAdapter = EntranceActivityRecyclerviewAdapter(this, contents,this)
+    var entranceActivityRecyclerviewAdapter: EntranceActivityRecyclerviewAdapter = EntranceActivityRecyclerviewAdapter(this, contents, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +57,12 @@ class EntranceActivity : Activity(), EARecAdapterInterface {
             2 -> {
                 startActivity(Intent(this, ImmersionTestActivity::class.java))
             }
+            3 -> {
+                startActivity(Intent(this, TabViewPageActivity::class.java))
+            }
+            4 -> {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
         }
     }
 
@@ -78,33 +84,33 @@ class EntranceActivity : Activity(), EARecAdapterInterface {
         contents.add(entrancePageBeanOne)
 
         var entrancePageBeanTwo: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanTwo.title = "Two"
-        entrancePageBeanTwo.content = "Two"
+        entrancePageBeanTwo.title = "TabViewPageActivity"
+        entrancePageBeanTwo.content = "TabViewPageActivity"
         contents.add(entrancePageBeanTwo)
 
         var entrancePageBeanThree: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanThree.title = "Three"
-        entrancePageBeanThree.content = "Three"
+        entrancePageBeanThree.title = "MainActivity"
+        entrancePageBeanThree.content = "MainActivity"
         contents.add(entrancePageBeanThree)
 
         var entrancePageBeanFour: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanFour.title = "Four"
-        entrancePageBeanFour.content = "Four"
+        entrancePageBeanFour.title = "Five"
+        entrancePageBeanFour.content = "Five"
         contents.add(entrancePageBeanFour)
 
         var entrancePageBeanFive: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanFive.title = "Five"
-        entrancePageBeanFive.content = "Five"
+        entrancePageBeanFive.title = "Six"
+        entrancePageBeanFive.content = "Six"
         contents.add(entrancePageBeanFive)
 
         var entrancePageBeanSix: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanSix.title = "Six"
-        entrancePageBeanSix.content = "Six"
+        entrancePageBeanSix.title = "Seven"
+        entrancePageBeanSix.content = "Seven"
         contents.add(entrancePageBeanSix)
 
         var entrancePageBeanSeven: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanSeven.title = "Seven"
-        entrancePageBeanSeven.content = "Seven"
+        entrancePageBeanSeven.title = "Eight "
+        entrancePageBeanSeven.content = "Eight "
         contents.add(entrancePageBeanSeven)
 
     }

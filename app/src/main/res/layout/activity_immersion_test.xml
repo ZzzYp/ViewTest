@@ -6,77 +6,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/cl_coordinatorLayout"
+
+    <com.mine.test.view.ImmerseGroup
+        android:id="@+id/immerseGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical">
+        android:fitsSystemWindows="true">
 
-        <RelativeLayout
-            android:id="@+id/rl_coordinatorLayout"
+        <LinearLayout
+            android:id="@+id/cl_coordinatorLayout"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:gravity="bottom">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/iv_menu_back"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="15dp"
-                android:src="@drawable/ic_icon_back" />
+            <RelativeLayout
+                android:id="@+id/rl_coordinatorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:gravity="bottom">
 
-            <TextView
-                android:id="@+id/tv_menu_lable"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="30dp"
-                android:layout_toLeftOf="@+id/ll_menu_more"
-                android:background="@drawable/ic_sys_ic_tag_number"
-                android:gravity="center"
-                android:minWidth="24dp"
-                android:paddingBottom="3dp"
-                android:paddingLeft="12dp"
-                android:textSize="8sp"
-                android:textStyle="bold" />
-
-
-            <LinearLayout
-                android:id="@+id/ll_menu_more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="18dp">
+                <ImageView
+                    android:id="@+id/iv_menu_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/ic_icon_back" />
 
                 <TextView
-                    android:id="@+id/tv_menu_done"
+                    android:id="@+id/tv_menu_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="30dp"
+                    android:layout_toLeftOf="@+id/ll_menu_more"
+                    android:background="@drawable/ic_sys_ic_tag_number"
+                    android:gravity="center"
+                    android:minWidth="24dp"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:text="1"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_menu_more"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_sys_ic_done"
-                    android:gravity="center"
-                    android:paddingLeft="12dp"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </RelativeLayout>
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="18dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4px"
-            android:layout_gravity="bottom"
-            android:background="@android:color/black" />
+                    <TextView
+                        android:id="@+id/tv_menu_done"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_sys_ic_done"
+                        android:gravity="center"
+                        android:paddingLeft="12dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
 
-    </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4px"
+                android:layout_gravity="bottom"
+                android:background="@android:color/black" />
 
+        </LinearLayout>
+    </com.mine.test.view.ImmerseGroup>
 
     <TextView
         android:id="@+id/tv_divide"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_below="@+id/cl_coordinatorLayout"
+        android:layout_below="@+id/immerseGroup"
         android:background="@android:color/holo_blue_bright" />
 
     <Button
@@ -84,13 +91,26 @@
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_below="@+id/tv_divide"
-        android:layout_margin="15dp" />
+        android:layout_margin="15dp"
+        android:gravity="center"
+        android:text="纯色"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/bt_drawable"
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_below="@+id/bt_color"
+        android:layout_margin="15dp"
+        android:gravity="center"
+        android:text="图片"
+        android:textSize="20sp" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/bt_drawable"
         android:layout_margin="15dp" />
 
 </RelativeLayout>
