@@ -9,6 +9,9 @@ import android.view.ViewTreeObserver;
  * Created by Administrator on 2018-10-26.
  */
 
+/**
+ * 解决 fitSystemWindow、adjustResize、FLAG_TRANSLUCENT_STATUS 一起使用的bug；
+ */
 public class SetResizeHeigth {
 
     public static void assistActivity(View content) {

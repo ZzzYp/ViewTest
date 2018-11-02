@@ -52,13 +52,13 @@ class EntranceActivity : Activity(), EARecAdapterInterface {
                 startActivity(Intent(this, MainActivity::class.java))
             }
             1 -> {
-                startActivity(Intent(this, PathViewActivity::class.java))
+                startActivity(Intent(this, TabViewPageActivity::class.java))
             }
             2 -> {
                 startActivity(Intent(this, ImmersionTestActivity::class.java))
             }
             3 -> {
-                startActivity(Intent(this, TabViewPageActivity::class.java))
+                startActivity(Intent(this, PathViewActivity::class.java))
             }
             4 -> {
                 startActivity(Intent(this, MainActivity::class.java))
@@ -74,18 +74,18 @@ class EntranceActivity : Activity(), EARecAdapterInterface {
         contents.add(entrancePageBeanToday)
 
         var entrancePageBeanPathView: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanPathView.title = "PathView"
-        entrancePageBeanPathView.content = "PathView"
+        entrancePageBeanPathView.title = "TabViewPageActivity"
+        entrancePageBeanPathView.content = "自定义绘制Kotlin练习"
         contents.add(entrancePageBeanPathView)
 
         var entrancePageBeanOne: EntrancePageBean = EntrancePageBean()
         entrancePageBeanOne.title = "ImmersionTest"
-        entrancePageBeanOne.content = "ImmersionTest"
+        entrancePageBeanOne.content = "沉浸式状态栏颜色和背景图切换"
         contents.add(entrancePageBeanOne)
 
         var entrancePageBeanTwo: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanTwo.title = "TabViewPageActivity"
-        entrancePageBeanTwo.content = "TabViewPageActivity"
+        entrancePageBeanTwo.title = "PathView"
+        entrancePageBeanTwo.content = "PathView"
         contents.add(entrancePageBeanTwo)
 
         var entrancePageBeanThree: EntrancePageBean = EntrancePageBean()

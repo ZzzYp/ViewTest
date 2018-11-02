@@ -11,9 +11,12 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 
+import com.blankj.utilcode.util.LogUtils;
+
 /**
  * 解决 fitSystemWindow、adjustResize、FLAG_TRANSLUCENT_STATUS 一起使用的bug；
  * 原理是动态改变 android.R.id.content 的 paddingBottom 值（键盘高度或者0）。
+ *
  * @author hiphonezhu@gmail.com
  * @version [Android-BaseLine, 17/6/12 14:28]
  */
@@ -26,6 +29,7 @@ public class KeyboardUtil {
 
     public void enable() {
         if (Build.VERSION.SDK_INT >= 19) {
+            /**注册一个回调函数，当在一个视图树中全局布局发生改变或者视图树中的某个视图的可视状态发生改变时调用这个回调函数。*/
             contentView.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
         }
     }
@@ -46,6 +50,8 @@ public class KeyboardUtil {
 
             //get screen height and calculate the difference with the useable area from the r
             int height = contentView.getContext().getResources().getDisplayMetrics().heightPixels;
+            LogUtils.e("zyp", "   height  : " + height);
+            LogUtils.e("zyp", "   r.bottom  : " + r.bottom);
             int diff = height - r.bottom;
 
             //if it could be a keyboard add the padding to the view

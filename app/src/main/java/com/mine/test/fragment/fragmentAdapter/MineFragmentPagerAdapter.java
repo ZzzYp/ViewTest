@@ -1,11 +1,11 @@
-package com.mine.test.fraagment.fragmentAdapter;
+package com.mine.test.fragment.fragmentAdapter;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.mine.test.fraagment.FirstFragment;
+import com.mine.test.fragment.FirstFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ public class MineFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private FirstFragment fragment;
     private List<Fragment> fragmentList = new ArrayList<>();
+    private List<String> tagNamesList = new ArrayList<>();
 
     public MineFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -33,9 +34,15 @@ public class MineFragmentPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String name = "tag" + position;
+        if (null == tagNamesList) {
+            return "null";
+        }
+        if (tagNamesList.size() >= position) {
+            return tagNamesList.get(position);
+        }
+        //String name = "tag" + position;
 
-        return name;
+        return "tag";
     }
 
     @Override
@@ -50,5 +57,13 @@ public class MineFragmentPagerAdapter extends FragmentPagerAdapter {
 
     public void setFragmentList(List<Fragment> fragmentList) {
         this.fragmentList = fragmentList;
+    }
+
+    public List<String> getTagNamesList() {
+        return tagNamesList;
+    }
+
+    public void setTagNamesList(List<String> tagNamesList) {
+        this.tagNamesList = tagNamesList;
     }
 }

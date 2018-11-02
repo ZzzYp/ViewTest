@@ -1,4 +1,4 @@
-package com.mine.test.fraagment
+package com.mine.test.fragment
 
 
 import android.os.Bundle

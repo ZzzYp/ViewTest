@@ -1,6 +1,7 @@
 package com.mine.test;
 
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.mine.test.clazzTest.ChildClazz;
@@ -157,6 +160,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    private WindowManager.LayoutParams mParams;
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -169,6 +174,20 @@ public class MainActivity extends AppCompatActivity
         }
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int y = displayMetrics.heightPixels/4;
+        int y = displayMetrics.heightPixels / 4;
+
+
+/*        mParams = new WindowManager.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                0,
+                // WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+//                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,// for Android 8.0
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
+                        WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL *//*|
+                        WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |*//*,
+                PixelFormat.TRANSLUCENT);
+
+        mParams.y = 30;*/
     }
 }

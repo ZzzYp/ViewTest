@@ -29,7 +29,7 @@ public class ImmersionTestActivity extends AppCompatActivity {
 
         setImmersion();
         initview();
-        new KeyboardUtil(this, findViewById(android.R.id.content)).enable();
+        //new KeyboardUtil(this, findViewById(android.R.id.content)).enable();
 
     }
 
@@ -66,14 +66,14 @@ public class ImmersionTestActivity extends AppCompatActivity {
     private void changeColor(int colorRes) {
         cl_coordinatorLayout.setBackgroundColor(colorRes);
         cl_coordinatorLayout.setFitsSystemWindows(true);
-        //setTitleBarBgDisAttribute();
+        setTitleBarBgDisAttribute();
     }
 
 
     private void changeDrawable(Drawable drawable) {
         cl_coordinatorLayout.setBackground(drawable);
         cl_coordinatorLayout.setFitsSystemWindows(true);
-        //setTitleBarBgDisAttribute();
+        setTitleBarBgDisAttribute();
     }
 
     private void setTitleBarBgDisAttribute() {
