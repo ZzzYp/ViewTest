@@ -63,6 +63,12 @@ class EntranceActivity : Activity(), EARecAdapterInterface {
             4 -> {
                 startActivity(Intent(this, MainActivity::class.java))
             }
+            5 ->{
+                startActivity(Intent(this, DataStructureTestActivity::class.java))
+            }
+            6 ->{
+                startActivity(Intent(this, ServiceTestActivity::class.java))
+            }
         }
     }
 
@@ -94,13 +100,13 @@ class EntranceActivity : Activity(), EARecAdapterInterface {
         contents.add(entrancePageBeanThree)
 
         var entrancePageBeanFour: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanFour.title = "Five"
-        entrancePageBeanFour.content = "Five"
+        entrancePageBeanFour.title = "DataStructureTestActivity"
+        entrancePageBeanFour.content = "数据结构T"
         contents.add(entrancePageBeanFour)
 
         var entrancePageBeanFive: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanFive.title = "Six"
-        entrancePageBeanFive.content = "Six"
+        entrancePageBeanFive.title = "ServiceTestActivity"
+        entrancePageBeanFive.content = "服务T"
         contents.add(entrancePageBeanFive)
 
         var entrancePageBeanSix: EntrancePageBean = EntrancePageBean()

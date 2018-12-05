@@ -47,7 +47,17 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ImmersionTestActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DataStructureTestActivity"
+            android:label="@string/title_activity_data_structure_test" />
+        <activity android:name=".ServiceTestActivity" />
+
+        <service android:name=".service.ServiceTestForGetServiceObj"></service>
+        <service
+            android:name=".service.ServiceTestForGetMsg"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

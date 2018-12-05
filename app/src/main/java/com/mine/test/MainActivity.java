@@ -171,6 +171,8 @@ public class MainActivity extends AppCompatActivity
 
                 startActivity(intent);
                 break;
+
+                //new InnerClass().getOutObj();
         }
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -189,5 +191,12 @@ public class MainActivity extends AppCompatActivity
                 PixelFormat.TRANSLUCENT);
 
         mParams.y = 30;*/
+    }
+
+
+    class InnerClass {
+        private void getOutObj() {
+            MainActivity.this.testLinkList();
+        }
     }
 }
