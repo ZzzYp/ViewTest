@@ -1,81 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.mine.test.ServiceTestActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/tv_ibinder_binder"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:background="@color/border_color"
-            android:text="通过获取获取IBinder接口方式" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/tv_ibinder_toast"
+            <Button
+                android:id="@+id/tv_ibinder_binder"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@color/border_color"
+                android:text="通过获取获取IBinder接口方式" />
+
+            <Button
+                android:id="@+id/tv_ibinder_toast"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@color/border_color"
+                android:text="Toast" />
+
+
+            <Button
+                android:id="@+id/tv_ibinder_unbinder"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@color/border_color"
+                android:text="解绑" />
+
+        </LinearLayout>
+
+        <View
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:background="@color/border_color"
-            android:text="Toast" />
+            android:layout_height="1dp"
+            android:background="@color/light_gray">
+
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/tv_ibinder_msg"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@color/border_color"
+                android:text="通过Message方式" />
+
+            <Button
+                android:id="@+id/tv_ibinder_msg_toast"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@color/border_color"
+                android:text="Toast" />
 
 
-        <Button
-            android:id="@+id/tv_ibinder_unbinder"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:background="@color/border_color"
-            android:text="解绑" />
+            <Button
+                android:id="@+id/tv_ibinder_msg_unbinder"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@color/border_color"
+                android:text="解绑" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp">
-
-        <Button
-            android:id="@+id/tv_ibinder_msg"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:background="@color/border_color"
-            android:text="通过Message方式" />
-
-        <Button
-            android:id="@+id/tv_ibinder_msg_toast"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:background="@color/border_color"
-            android:text="Toast" />
-
-
-        <Button
-            android:id="@+id/tv_ibinder_msg_unbinder"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:background="@color/border_color"
-            android:text="解绑" />
-
-    </LinearLayout>
-
-
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

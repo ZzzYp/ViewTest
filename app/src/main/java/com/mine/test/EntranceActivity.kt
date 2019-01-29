@@ -69,6 +69,9 @@ class EntranceActivity : Activity(), EARecAdapterInterface {
             6 ->{
                 startActivity(Intent(this, ServiceTestActivity::class.java))
             }
+            7 ->{
+                startActivity(Intent(this, AidlActivity::class.java))
+            }
         }
     }
 
@@ -110,8 +113,8 @@ class EntranceActivity : Activity(), EARecAdapterInterface {
         contents.add(entrancePageBeanFive)
 
         var entrancePageBeanSix: EntrancePageBean = EntrancePageBean()
-        entrancePageBeanSix.title = "Seven"
-        entrancePageBeanSix.content = "Seven"
+        entrancePageBeanSix.title = "AidlActivity"
+        entrancePageBeanSix.content = "Aidl跨进程"
         contents.add(entrancePageBeanSix)
 
         var entrancePageBeanSeven: EntrancePageBean = EntrancePageBean()

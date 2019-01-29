@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.blankj.utilcode.util.LogUtils
 import com.mine.test.service.ServiceTestForGetMsg
 import com.mine.test.service.ServiceTestForGetServiceObj
 import kotlinx.android.synthetic.main.activity_service_test.*
@@ -23,6 +24,9 @@ class ServiceTestActivity : Activity(), View.OnClickListener {
     var getForGetMsgConnection: ServiceTestForGetMsgConnection = ServiceTestForGetMsgConnection()
     var mBinder: ServiceTestForGetServiceObj.BindDemo? = null
     var mServiceObj: ServiceTestForGetServiceObj? = null
+    var mServiceMsg: ServiceTestForGetMsg? = null
+    var mServiceObjIsBinder: Boolean = false
+    var mServiceMsgIsBinder: Boolean = false
     lateinit var tv_ibinder_binder: Button
     lateinit var tv_ibinder_toast: Button
     lateinit var tv_ibinder_unbinder: Button
@@ -67,13 +71,19 @@ class ServiceTestActivity : Activity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.tv_ibinder_binder -> startServiceForGetServiceObj()
+
             R.id.tv_ibinder_toast -> {
                 var msg = mServiceObj?.getStr(" get Ibinder")
                 Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
             }
+
+
             R.id.tv_ibinder_unbinder -> {
-                if (mServiceObj?.isRestricted!!) {
-                    unbindService(getServiceObjConnection)
+                if (mServiceMsgIsBinder) {
+                    if (mServiceObj?.isRestricted!!) {
+                        mServiceObjIsBinder = false
+                        unbindService(getServiceObjConnection)
+                    }
                 }
             }
 
@@ -83,6 +93,10 @@ class ServiceTestActivity : Activity(), View.OnClickListener {
             R.id.tv_ibinder_msg_toast -> {
             }
             R.id.tv_ibinder_msg_unbinder -> {
+                if (mServiceMsgIsBinder) {
+                    mServiceMsgIsBinder = false
+                    unbindService(getForGetMsgConnection)
+                }
             }
 
 
@@ -120,6 +134,7 @@ class ServiceTestActivity : Activity(), View.OnClickListener {
         }
 
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            mServiceObjIsBinder = true
             //step 1  get Ibinder  (获取IBinder接口)
             mBinder = service as? ServiceTestForGetServiceObj.BindDemo
             //kotlin 中 (? 表示当前是否对象可以为空 ，加在变量名后，系统在任何情况不会报它的空指针异常
@@ -137,7 +152,7 @@ class ServiceTestActivity : Activity(), View.OnClickListener {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             //客户端并没有像扩展Binder类那样直接调用服务端的方法，而是采用了用Message来传递信息的方式达到交互的目的
             var msger: Messenger = Messenger(service)
-            var msg: Message = Message()
+            var msg: Message = Message.obtain()
             var bundle: Bundle = Bundle()
             bundle.putString("send", "clinet to service success");
             msg.data = bundle
@@ -152,7 +167,9 @@ class ServiceTestActivity : Activity(), View.OnClickListener {
     inner class ClientHandler : Handler() {
         override fun handleMessage(msg: Message?) {
             super.handleMessage(msg)
-
+            if (null != msg) {
+                LogUtils.d(TAG, "  server msg " + msg.obj)
+            }
         }
     }
 
@@ -161,7 +178,9 @@ class ServiceTestActivity : Activity(), View.OnClickListener {
         super.onDestroy()
 
         try {
+            mServiceObjIsBinder = false
             unbindService(getServiceObjConnection)
+            mServiceMsgIsBinder = false
             unbindService(getForGetMsgConnection)
         } catch (e: Exception) {
             Log.d(TAG, e.toString())

@@ -20,9 +20,19 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.mine.test.clazzTest.ChildClazz;
+import com.mine.test.interfaces.ApiService;
 import com.mine.test.javaTest.LinkedListTest;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -59,7 +69,49 @@ public class MainActivity extends AppCompatActivity
 
 
         initView();
+
+        initRetrifit();
+        initOkHttp();
+
     }
+
+    private void initOkHttp() {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.newCall(new Request.Builder().url("").build()).enqueue(new okhttp3.Callback() {
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+            }
+        });
+
+
+    }
+
+    private void initRetrifit() {
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("\"https://api.github.com/\"").build();
+        ApiService apiService = retrofit.create(ApiService.class);
+        Call<List<Response>> call = apiService.listRepos("ddd");
+        call.enqueue(new Callback<List<Response>>() {
+            @Override
+            public void onResponse(Call<List<Response>> call, Response<List<Response>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Response>> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
 
     private void initView() {
         tvToPathview = findViewById(R.id.tv_to_pathview);
@@ -172,7 +224,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
 
-                //new InnerClass().getOutObj();
+            //new InnerClass().getOutObj();
         }
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);

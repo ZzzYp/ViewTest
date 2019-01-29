@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
+import com.blankj.utilcode.util.LogUtils;
+
 /**
  * Created by Administrator on 2018-10-26.
  */
@@ -36,6 +38,8 @@ public class SetResizeHeigth {
 
     private void possiblyResizeChildOfContent() {
         int usableHeightNow = computeUsableHeight();
+        LogUtils.d("zyp", "  usableHeightNow   :  " + usableHeightNow);
+        LogUtils.d("zyp", "  usableHeightPrevious   :  " + usableHeightPrevious);
         if (usableHeightNow != usableHeightPrevious) {
             //if twice height is diff
             // calculate`s visual height = view`s height
@@ -49,6 +53,7 @@ public class SetResizeHeigth {
         //calculate visual height
         Rect r = new Rect();
         mChildOfContent.getWindowVisibleDisplayFrame(r);
+        LogUtils.d("zyp", "   r.bottom  :  " +  r.bottom);
         return (r.bottom);
     }
 

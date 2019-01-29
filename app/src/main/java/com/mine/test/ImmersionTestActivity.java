@@ -14,13 +14,17 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.mine.test.utils.DpUtils;
 import com.mine.test.utils.KeyboardUtil;
+import com.mine.test.utils.SetResizeHeigth;
+import com.mine.test.view.ImmerseGroup;
 
 public class ImmersionTestActivity extends AppCompatActivity {
 
     private LinearLayout cl_coordinatorLayout;
     private RelativeLayout rl_coordinatorLayout;
+    private ImmerseGroup immerseGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public class ImmersionTestActivity extends AppCompatActivity {
 
         setImmersion();
         initview();
+        SetResizeHeigth.assistActivity(findViewById(android.R.id.content));
         //new KeyboardUtil(this, findViewById(android.R.id.content)).enable();
 
     }
@@ -37,6 +42,7 @@ public class ImmersionTestActivity extends AppCompatActivity {
 
         cl_coordinatorLayout = findViewById(R.id.cl_coordinatorLayout);
         rl_coordinatorLayout = findViewById(R.id.rl_coordinatorLayout);
+        immerseGroup = findViewById(R.id.immerseGroup);
 
 
         findViewById(R.id.bt_color).setOnClickListener(new View.OnClickListener() {
@@ -64,15 +70,19 @@ public class ImmersionTestActivity extends AppCompatActivity {
     }
 
     private void changeColor(int colorRes) {
-        cl_coordinatorLayout.setBackgroundColor(colorRes);
-        cl_coordinatorLayout.setFitsSystemWindows(true);
+//        cl_coordinatorLayout.setBackgroundColor(colorRes);
+//        cl_coordinatorLayout.setFitsSystemWindows(true);
+        immerseGroup.setBackgroundColor(colorRes);
+        immerseGroup.setFitsSystemWindows(true);
         setTitleBarBgDisAttribute();
     }
 
 
     private void changeDrawable(Drawable drawable) {
-        cl_coordinatorLayout.setBackground(drawable);
-        cl_coordinatorLayout.setFitsSystemWindows(true);
+//        cl_coordinatorLayout.setBackground(drawable);
+//        cl_coordinatorLayout.setFitsSystemWindows(true);
+        immerseGroup.setBackground(drawable);
+        immerseGroup.setFitsSystemWindows(true);
         setTitleBarBgDisAttribute();
     }
 
@@ -85,6 +95,7 @@ public class ImmersionTestActivity extends AppCompatActivity {
         //cl_coordinatorLayout.setLayoutParams(llp);
         cl_coordinatorLayout.setPadding(0, statusBarHeight, 0, 0);
 
+       
 
     }
 
